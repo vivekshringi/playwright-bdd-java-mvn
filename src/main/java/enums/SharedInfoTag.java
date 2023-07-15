@@ -1,10 +1,7 @@
 package enums;
 
 public enum SharedInfoTag {
-    TEST("TEST"),
-    PET("PET"),
-    INVENTORY("INVENTORY"),
-    USER("USER");
+    PRODUCT("PRODUCT");
 
     private final String value;
 

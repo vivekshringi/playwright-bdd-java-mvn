@@ -1,6 +1,7 @@
 package pages;
 
 import com.microsoft.playwright.Page;
+import modules.ProductCard;
 
 public class HomePage extends BasePage {
 
@@ -9,6 +10,10 @@ public class HomePage extends BasePage {
     }
 
     public void open() {
-        page.navigate("https://playwright.dev/java");
+        page.navigate("/");
+    }
+
+    public ProductCard getProductCardLocator(String productName) {
+        return new ProductCard(page, productName);
     }
 }

@@ -3,11 +3,11 @@ package steps;
 import com.microsoft.playwright.Page;
 
 public class BaseSteps {
-    protected World world;
+    protected ScenarioContext scenarioContext;
     protected Page page;
 
-    public BaseSteps(World world) {
-        this.world = world;
-        this.page = this.world.page;
+    public BaseSteps(ScenarioContext scenarioContext) {
+        this.scenarioContext = scenarioContext;
+        this.page = this.scenarioContext.page;
     }
 }

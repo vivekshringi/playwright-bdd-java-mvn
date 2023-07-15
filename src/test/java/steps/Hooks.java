@@ -10,21 +10,23 @@ import java.util.Locale;
 
 public class Hooks extends BaseSteps {
 
-    public Hooks(World world) {
-        super(world);
+    public Hooks(ScenarioContext scenarioContext) {
+        super(scenarioContext);
     }
 
     @AfterAll
     static void after_all() {
-        World.playwright.close();
+        ScenarioContext.playwright.close();
     }
 
 
     @After
     public void after(Scenario scenario) {
         String scenarioTraceName = scenario.getName().toLowerCase(Locale.ROOT).replace(" ", "-");
-        this.world.context.tracing().stop(new Tracing.StopOptions()
+        this.scenarioContext.context.tracing().stop(new Tracing.StopOptions()
                 .setPath(Paths.get("target", "results", scenarioTraceName + "-trace.zip")));
-        this.world.context.close();
+        this.scenarioContext.context.close();
+
+        this.scenarioContext.cleanUp();
     }
 }
