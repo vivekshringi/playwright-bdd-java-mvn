@@ -5,7 +5,7 @@ Feature: Order Coffee
     And I checked "Espresso" price, cart status and total amount on menu page
     Then I should see that no "Espresso" is added into cart
     And  I should see that Total Price is equal to "$0.00"
-
+@smoke
   Scenario: Adding Coffee
     Given I am on the COFFEE homepage
     And I checked "Espresso" price, cart status and total amount on menu page
