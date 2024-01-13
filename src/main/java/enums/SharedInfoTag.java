@@ -1,7 +1,7 @@
 package enums;
 
 public enum SharedInfoTag {
-    PRODUCT("PRODUCT");
+    COFFEE("COFFEE");
 
     private final String value;
 
