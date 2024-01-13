@@ -29,7 +29,7 @@ jobs:
         cache: maven
     - name: install and run tests with Maven
       run: mvn clean install --file pom.xml
-    - run: mkdir staging && cp target/* staging
+    - run: mkdir staging && cp target/cucumber/browser.html staging
     - uses: actions/upload-artifact@v3
       with:
         name: Package
