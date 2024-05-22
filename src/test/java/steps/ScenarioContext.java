@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ScenarioContext {
     public Page page;
     public static Playwright playwright = Playwright.create();
-    public static Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true).setSlowMo(100));
+    public static Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(100));
     ;
     public BrowserContext context;
     private final ConcurrentHashMap<String, Object> sharedInfo = new ConcurrentHashMap<>();

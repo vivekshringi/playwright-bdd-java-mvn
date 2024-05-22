@@ -1,6 +1,5 @@
 package steps;
 
-import com.microsoft.playwright.Locator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,8 +21,8 @@ public class CoffeeCommonSteps extends BaseSteps {
         this.checkOutPage = new CheckOutPage(page);
     }
 
-    @Given("I am on the COFFEE homepage")
-    public void i_am_on_the_coffee_homepage(){
+    @Given("I opened the coffee shop online")
+    public void i_opened_the_coffee_shop_online(){
       menuPage.open("https://coffee-cart.app/");
     }
 
@@ -51,12 +50,15 @@ public class CoffeeCommonSteps extends BaseSteps {
             String total = menuPage.getTotalText();
             String item = menuPage.coffeeHeader.getItems();
             CoffeeModel c = CoffeeModel.builder().name(name).price(price).total(total).items(item).build();
+            System.out.print(c);
+            System.out.print(c.getName());
             scenarioContext.setSharedInfo(c.getName(),c);
         }
 
     @Then("I should see that no {string} is added into cart")
     public void iShouldSeeThatNoItemIsAddedIntoCart(String name) {
-        CoffeeModel c = scenarioContext.getSharedInfo(name,CoffeeModel.class);
+        CoffeeModel c = scenarioContext.getSharedInfo(name, CoffeeModel.class);
+        System.out.println(c.getItems());
         Assert.assertEquals(menuPage.coffeeHeader.getItems(),c.getItems());
     }
 
