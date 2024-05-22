@@ -91,7 +91,7 @@ public class CoffeeCommonSteps extends BaseSteps {
     @Then("{string} Coffee card border color should be changed to {string}")
     public void coffeeCardBorderColorShouldBeChangedTo(String name, String color) {
         menuPage.coffeeCard = new CoffeeCard(page, name);
-        String borderColor = menuPage.PropertyOnHover();
+        String borderColor = menuPage.propertyOnHover();
         Assert.assertEquals(borderColor, color);
     }
 

@@ -25,7 +25,6 @@ public class MenuPage extends BaseModule {
         this.cartOverview = new CartOverview(page);
         this.acceptOffer = promo.locator("button.yes").getByText("Yes");
         this.skipOffer = promo.locator("button").nth(1);
-
     }
 
     public void open(String appURL) {
@@ -50,7 +49,7 @@ public class MenuPage extends BaseModule {
         this.getCoffeeContainer(name).hover();
     }
 
-    public String PropertyOnHover() {
+    public String propertyOnHover() {
         return  (String) coffeeCard.coffeeContainer.evaluate("el=>getComputedStyle(el).borderColor");
     }
 
@@ -64,9 +63,9 @@ public class MenuPage extends BaseModule {
         return coffeeCard.coffeePrice.innerText();
     }
 
-    public String isPromoExist() {
+    public void isPromoExist() {
         promo.isVisible();
-        return coffeeCard.coffeePrice.innerText();
+        coffeeCard.coffeePrice.innerText();
     }
 }
 
