@@ -1,4 +1,4 @@
-package steps;
+package parallel;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Tracing;

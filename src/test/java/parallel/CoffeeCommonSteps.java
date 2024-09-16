@@ -1,4 +1,4 @@
-package steps;
+package parallel;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -21,12 +21,12 @@ public class CoffeeCommonSteps extends BaseSteps {
         this.checkOutPage = new CheckOutPage(page);
     }
 
-    @Given("I opened the coffee shop online")
+    @Given("I open the coffee shop online")
     public void i_opened_the_coffee_shop_online(){
       menuPage.open("https://coffee-cart.app/");
     }
 
-    @When("I ordered {string}")
+    @When("I order a {string} Coffee")
     public void i_ordered(String name) {
         menuPage.selectCoffee(name);
     }
@@ -37,13 +37,13 @@ public class CoffeeCommonSteps extends BaseSteps {
         Assert.assertEquals(menuPage.coffeeHeader.getItems(),c.getItems().replace('0','1'));
     }
 
-    @And("I should see that Total Price is not same and increased by {string} Price")
+    @And("I should see that Total Price is not the same and increased by {string} Coffee Price")
     public void iShouldSeeThatTotalPriceIsNotAndIncreasedByCoffeePrice(String name) {
         CoffeeModel c = scenarioContext.getSharedInfo(name ,CoffeeModel.class);
         Assert.assertEquals(menuPage.getTotalText(),"Total: "+c.getPrice());
     }
 
-    @And("I checked {string} price, cart status and total amount on menu page")
+    @And("I check {string} price, cart status and total amount on home page")
     public void iCheckedPriceCartStatusAndTotalAmountOnMenuPage(String name) {
             menuPage.coffeeCard = new CoffeeCard(page, name);
             String price = menuPage.getPriceText();
@@ -69,7 +69,7 @@ public class CoffeeCommonSteps extends BaseSteps {
         scenarioContext.cleanUp();
     }
 
-    @When("I double clicked {string}")
+    @When("I double click on {string}")
     public void iDoubleClicked(String name) {
         menuPage.coffeeCard = new CoffeeCard(page);
         menuPage.doubleClick(name);
@@ -106,7 +106,7 @@ public class CoffeeCommonSteps extends BaseSteps {
       menuPage.coffeeCard.addToCart(response);
     }
 
-    @Then("I get one {string} coffee in {string} offer to select")
+    @Then("I get a promo offer to select a {string} coffee in {string}")
     public void iGetOneCoffeeInOfferToSelect(String arg0, String arg1) {
         menuPage.isPromoExist();
         String offerText = menuPage.promo.locator("span").innerText();
@@ -119,8 +119,8 @@ public class CoffeeCommonSteps extends BaseSteps {
         menuPage.skipOffer.click();
     }
 
-    @And("Promo coffee is not added in my cart and it shows {string} items")
-    @And("Promo coffee is added in my cart and it shows {string} items")
+    @And("Promo coffee offer is not added in my cart and it shows {string} items")
+    @And("Promo coffee offer is added in my cart and it shows {string} items")
     public void promoCoffeeIsNotAddedInMyCartAndItShowsItems(String items) {
         Assert.assertEquals(items, menuPage.coffeeHeader.getItems());
     }
